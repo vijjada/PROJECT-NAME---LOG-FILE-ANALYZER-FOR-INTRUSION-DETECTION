@@ -111,54 +111,39 @@ cd log-file-analyzer
    - Select the project directory
    - Click Finish
 
-Configure Log File Paths
+3. Configure Log File Paths
+   - Update the file paths in both parser files:
+     - ApacheLogParser.java (Line 13):
+       java
+       String logFilePath = "C:\\path\\to\\sample_apache.log.txt";
+   - SSHLogParser.java (Line 13):
+       java
+       String logFilePath = "C:\\path\\to\\sample_ssh.log.txt";
 
-Update the file paths in both parser files:
+4. Compile the Project
+  - Right-click on project → Build Project
+  - Ensure no compilation errors
 
-ApacheLogParser.java (Line 13):
+# **Usage**
+**Running Apache Log Analysis**
+   - Right-click on ApacheLogParser.java
+   - Select Run As → Java Application
+   - View detection results in console
+**Running SSH Log Analysis**
+   - Right-click on SSHLogParser.java
+   - Select Run As → Java Application
+   - View detection results in console
+**Using Custom Log Files**
+    *Replace the sample log files with your own:*
+       - Ensure Apache logs follow Common Log Format
+       - Ensure SSH logs follow OpenSSH syslog format
+       - Update file paths in the parser files
 
-java
-String logFilePath = "C:\\path\\to\\sample_apache.log.txt";
-SSHLogParser.java (Line 13):
-
-java
-String logFilePath = "C:\\path\\to\\sample_ssh.log.txt";
-Compile the Project
-
-Right-click on project → Build Project
-
-Ensure no compilation errors
-
-🎮 Usage
-Running Apache Log Analysis
-Right-click on ApacheLogParser.java
-
-Select Run As → Java Application
-
-View detection results in console
-
-Running SSH Log Analysis
-Right-click on SSHLogParser.java
-
-Select Run As → Java Application
-
-View detection results in console
-
-Using Custom Log Files
-Replace the sample log files with your own:
-
-Ensure Apache logs follow Common Log Format
-
-Ensure SSH logs follow OpenSSH syslog format
-
-Update file paths in the parser files
-
-🔐 Detection Mechanisms
+# **Detection Mechanisms**
 1. Brute-Force Attack Detection
 Target: SSH Authentication Logs
 Threshold: 5 failed login attempts per IP address
 Algorithm:
-
 text
 For each SSH log entry:
     If event type == "FAILED":
@@ -169,11 +154,11 @@ Example Alert:
 
 text
 [ALERT] Brute-force attack detected from IP: 192.168.1.60 (5 failed login attempts)
+
 2. Port Scanning Detection
 Target: Apache Web Server Logs
 Threshold: 5 unique URLs accessed per IP address
 Algorithm:
-
 text
 For each Apache log entry:
     Track unique URLs accessed by each IP
@@ -183,11 +168,11 @@ Example Alert:
 
 text
 [ALERT] Port scan suspected from IP: 10.0.0.30 (accessed 5 different URLs)
+
 3. Denial of Service (DoS) Detection
 Target: Apache Web Server Logs
 Threshold: 10 total requests per IP address
 Algorithm:
-
 text
 For each Apache log entry:
     Increment request count for source IP
@@ -197,7 +182,8 @@ Example Alert:
 
 text
 [ALERT] Possible DoS attack from IP: 192.168.1.70 (15 requests)
-📈 Sample Outputs
+
+***Sample Outputs***
 Apache Log Analysis Output
 text
 === Apache Log Parsing Complete ===
@@ -229,7 +215,8 @@ Successful logins: 5
 Time: Oct 24 16:03:22 | Event: SUCCESS | User: alice | IP: 192.168.10.25
 Time: Oct 24 16:06:35 | Event: FAILED | User: admin | IP: 212.47.232.105
 ...
-🛠️ Technical Implementation
+
+# **Technical Implementation**
 Regular Expression Patterns
 Apache Log Pattern:
 
@@ -255,135 +242,42 @@ java
 final int BRUTE_FORCE_THRESHOLD = 5;    // Failed login attempts
 final int PORT_SCAN_THRESHOLD = 5;       // Unique URLs accessed
 final int DOS_THRESHOLD = 10;            // Total requests
-🔒 Security Recommendations
+
+
+# **Security Recommendations**
 Based on detection results, the system recommends:
 
-Immediate Actions
-✅ Block critical threat IPs at firewall level immediately
+***Immediate Actions:***
+  - Block critical threat IPs at firewall level immediately
+  - Disable root SSH access - enforce key-based authentication only
+  - Implement fail2ban or similar intrusion prevention system
+  - Enable two-factor authentication for all administrative accounts
+  - Review and strengthen password policies
+***Enhanced Monitoring***
+  - Reduce failed attempt threshold to 3 for root accounts
+  - Implement real-time alerting for administrative account failures
+  - Monitor medium-risk IPs for escalation patterns
+  - Cross-reference suspicious IPs with threat intelligence databases
 
-✅ Disable root SSH access - enforce key-based authentication only
-
-✅ Implement fail2ban or similar intrusion prevention system
-
-✅ Enable two-factor authentication for all administrative accounts
-
-✅ Review and strengthen password policies
-
-Enhanced Monitoring
-📊 Reduce failed attempt threshold to 3 for root accounts
-
-📊 Implement real-time alerting for administrative account failures
-
-📊 Monitor medium-risk IPs for escalation patterns
-
-📊 Cross-reference suspicious IPs with threat intelligence databases
-
-🎓 Learning Outcomes
+# **Learning Outcomes**
 Programming Skills Demonstrated
 File I/O Mastery: Advanced use of BufferedReader for efficient log processing
-
 Regular Expression Expertise: Complex pattern matching for data extraction
-
 Data Structure Proficiency: Strategic application of HashMap, HashSet, and ArrayList
-
 Object-Oriented Design: Professional implementation of encapsulated classes
-
 Exception Handling: Robust error management ensuring program stability
 
-Cybersecurity Concepts Applied
+# **Cybersecurity Concepts Applied**
 Log Analysis Fundamentals: Deep understanding of Apache and SSH log formats
-
 Threat Detection Methodologies: Signature-based and threshold-based detection
-
 Attack Pattern Recognition: Identification of brute-force, port scanning, and DoS characteristics
-
 Security Monitoring: Real-time analysis and alert generation
-
 Forensic Investigation: Structured logging and data preservation
 
-🚀 Future Enhancements
-Planned Features
- Machine learning-based anomaly detection
-
- Real-time log streaming with Apache Kafka
-
- Web dashboard for visualization (React/Spring Boot)
-
- Email/SMS alert integration
-
- Database integration for historical analysis (MySQL/PostgreSQL)
-
- Multi-threaded processing for large log files
-
- Support for additional log formats (Nginx, IIS, Firewall logs)
-
- Geographic IP location mapping
-
- Automated incident response workflows
-
- RESTful API for integration with SIEM systems
-
-Scalability Improvements
-Implement connection pooling for database operations
-
-Add caching mechanisms for frequently accessed data
-
-Integrate with cloud storage (AWS S3, Azure Blob)
-
-Containerization with Docker for easy deployment
-
-👨‍💻 Author
+# ***Created By***
 Vijjada Prem Sai
 B.Tech CSE Cybersecurity
 GD Goenka University, Gurugram, Haryana
-
-📧 Email: vijjadapremsaiofficial@gmail.com
-
-💼 LinkedIn: [Your LinkedIn Profile]
-
-🐱 GitHub: [Your GitHub Profile]
-
-📄 License
-This project is licensed under the MIT License - see the LICENSE file for details.
-
-🙏 Acknowledgments
-GD Goenka University for academic support
-
-Open-source community for Java libraries
-
-Apache Software Foundation for log format standards
-
-OpenSSH project for authentication log specifications
-
-📚 References
-Apache HTTP Server Log Files Documentation
-
-OpenSSH Manual Pages
-
-Java Regular Expressions Tutorial
-
-OWASP Top 10 Security Risks
-
-🤝 Contributing
-Contributions are welcome! Please feel free to submit a Pull Request.
-
-Fork the repository
-
-Create your feature branch (git checkout -b feature/AmazingFeature)
-
-Commit your changes (git commit -m 'Add some AmazingFeature')
-
-Push to the branch (git push origin feature/AmazingFeature)
-
-Open a Pull Request
-
-📞 Support
-If you have any questions or need assistance, please:
-
-Open an issue in the GitHub repository
-
 Email: vijjadapremsaiofficial@gmail.com
-
-⭐ If you found this project helpful, please consider giving it a star!
-
-Last Updated: October 27, 2025
+# License
+This project is licensed under the MIT License - see the LICENSE file for details.
