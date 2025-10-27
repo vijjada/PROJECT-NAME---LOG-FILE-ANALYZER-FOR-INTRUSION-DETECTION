@@ -1,173 +1,115 @@
 # PROJECT-NAME---LOG-FILE-ANALYZER-FOR-INTRUSION-DETECTION
-🔍 Log File Analyzer for Intrusion Detection
 A comprehensive Java-based intrusion detection system that analyzes Apache web server logs and SSH authentication logs to identify critical security threats including brute-force attacks, port scanning, and Denial of Service (DoS) patterns.
 
-📋 Table of Contents
-Overview
+# **Table of Contents**
+- Overview
+- Features
+- Technologies Used
+- Project Structure
+- Installation
+- Usage
+- Detection Mechanisms
+- Sample Outputs
+- Technical Implementation
+- Security Recommendations
+- Learning Outcomes
+- Future Enhancements
+- Author
 
-Features
-
-Technologies Used
-
-Project Structure
-
-Installation
-
-Usage
-
-Detection Mechanisms
-
-Sample Outputs
-
-Technical Implementation
-
-Security Recommendations
-
-Learning Outcomes
-
-Future Enhancements
-
-Author
-
-🎯 Overview
+# **Overview**
 This project implements a real-time log analysis tool that parses server logs to detect suspicious activities and potential cyber attacks. Built with Java, the system provides automated threat identification and alerting capabilities, making it suitable for security monitoring and forensic investigation.
 
-Key Achievements
-✅ 100% detection accuracy on simulated attack scenarios
+Key Achievements:
+  - 100% detection accuracy on simulated attack scenarios
+  - Zero false positives in testing
+  - Real-time analysis with instant alert generation
+  - Modular design for easy scalability
 
-✅ Zero false positives in testing
+# **Features**
+**Security Detection Capabilities**
+- Brute-Force Attack Detection: Identifies repeated failed login attempts targeting SSH authentication
+- Port Scanning Detection: Recognizes systematic probing of multiple endpoints
+- DoS Attack Detection: Monitors excessive request patterns from single IP addresses
+- Threat Classification: Categorizes IP addresses by risk level (CRITICAL, HIGH, MEDIUM, LOW)
 
-✅ Real-time analysis with instant alert generation
+# **Analysis Features**
+- Apache Common Log Format parsing
+- SSH authentication log parsing
+- Detailed attack timeline reconstruction
+- IP address activity profiling
+- HTTP status code analysis
+- Request method distribution analysis
 
-✅ Modular design for easy scalability
+# **Technologies Used**
+**Core Technologies**
+  - Programming Language: Java (JDK 8+)
+  - IDE: Eclipse IDE for Java Developers
+  - Build System: Standard Eclipse Java project structure
+**Java Libraries**
+  - java.io.BufferedReader - Efficient file reading
+  - java.io.FileReader - Log file access
+  - java.util.HashMap - IP address tracking
+  - java.util.HashSet - Unique URL detection
+  - java.util.ArrayList - Log entry storage
+  - java.util.regex.Pattern - Regular expression pattern compilation
+  - java.util.regex.Matcher - Pattern matching and data extraction
 
-✨ Features
-🛡️ Security Detection Capabilities
-Brute-Force Attack Detection: Identifies repeated failed login attempts targeting SSH authentication
-
-Port Scanning Detection: Recognizes systematic probing of multiple endpoints
-
-DoS Attack Detection: Monitors excessive request patterns from single IP addresses
-
-Threat Classification: Categorizes IP addresses by risk level (CRITICAL, HIGH, MEDIUM, LOW)
-
-📊 Analysis Features
-Apache Common Log Format parsing
-
-SSH authentication log parsing
-
-Detailed attack timeline reconstruction
-
-IP address activity profiling
-
-HTTP status code analysis
-
-Request method distribution analysis
-
-💻 Technologies Used
-Core Technologies
-Programming Language: Java (JDK 8+)
-
-IDE: Eclipse IDE for Java Developers
-
-Build System: Standard Eclipse Java project structure
-
-Java Libraries
-java.io.BufferedReader - Efficient file reading
-
-java.io.FileReader - Log file access
-
-java.util.HashMap - IP address tracking
-
-java.util.HashSet - Unique URL detection
-
-java.util.ArrayList - Log entry storage
-
-java.util.regex.Pattern - Regular expression pattern compilation
-
-java.util.regex.Matcher - Pattern matching and data extraction
-
-📁 Project Structure
-text
+# **Project Structure**
 Log-File-Analyzer/
-│
-├── src/
-│   ├── LogEntry.java              # Apache log data structure
-│   ├── SSHLogEntry.java           # SSH log data structure
-│   ├── ApacheLogParser.java       # Apache log detection engine
-│   └── SSHLogParser.java          # SSH log detection engine
-│
-├── sample_apache.log.txt          # Sample Apache web server logs
-├── sample_ssh.log.txt             # Sample SSH authentication logs
-└── README.md                      # Project documentation
-File Descriptions
+- src/
+  - LogEntry.java              # Apache log data structure
+  - SSHLogEntry.java           # SSH log data structure
+  - ApacheLogParser.java       # Apache log detection engine
+  - SSHLogParser.java          # SSH log detection engine
+
+- sample_apache.log.txt          # Sample Apache web server logs
+- sample_ssh.log.txt             # Sample SSH authentication logs
+- README.md                      # Project documentation
+
+**File Descriptions**
 1. LogEntry.java
 Encapsulates Apache log entry data with fields:
-
-IP Address
-
-Timestamp
-
-HTTP Method (GET, POST, PUT, DELETE)
-
-URL
-
-Status Code
+   - IP Address
+   - Timestamp
+   - HTTP Method (GET, POST, PUT, DELETE)
+   - URL
+   - Status Code
 
 2. SSHLogEntry.java
 Encapsulates SSH authentication event data with fields:
-
-Timestamp
-
-Event Type (SUCCESS/FAILED)
-
-Username
-
-IP Address
+   - Timestamp
+   - Event Type (SUCCESS/FAILED)
+   - Username
+   - IP Address
 
 3. ApacheLogParser.java
 Main detection engine for web server logs that:
-
-Parses Apache Common Log Format using regex
-
-Detects port scanning (5+ unique URLs per IP)
-
-Detects DoS attacks (10+ requests per IP)
-
-Generates detailed security alerts
+   - Parses Apache Common Log Format using regex
+   - Detects port scanning (5+ unique URLs per IP)
+   - Detects DoS attacks (10+ requests per IP)
+   - Generates detailed security alerts
 
 4. SSHLogParser.java
 Main detection engine for SSH logs that:
+   - Parses OpenSSH syslog format
+   - Detects brute-force attacks (5+ failed attempts per IP)
+   - Tracks both successful and failed authentication events
+   - Provides comprehensive attack timeline
 
-Parses OpenSSH syslog format
-
-Detects brute-force attacks (5+ failed attempts per IP)
-
-Tracks both successful and failed authentication events
-
-Provides comprehensive attack timeline
-
-🚀 Installation
+# **Installation**
 Prerequisites
-Java Development Kit (JDK): Version 8 or higher
-
-Eclipse IDE: For Java Developers (or any Java IDE)
-
-Text Editor: For viewing/editing log files
-
-Setup Steps
-Clone the Repository
-
-bash
-git clone https://github.com/yourusername/log-file-analyzer.git
+  - Java Development Kit (JDK): Version 8 or higher
+  - Eclipse IDE: For Java Developers (or any Java IDE)
+  - Text Editor: For viewing/editing log files
+**Setup Steps**
+1. Clone the Repository
+   git clone https://github.com/yourusername/log-file-analyzer.git
 cd log-file-analyzer
-Open in Eclipse IDE
 
-File → Open Projects from File System
-
-Select the project directory
-
-Click Finish
+2. Open in Eclipse IDE
+   - File → Open Projects from File System
+   - Select the project directory
+   - Click Finish
 
 Configure Log File Paths
 
