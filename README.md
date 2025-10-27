@@ -13,8 +13,6 @@ A comprehensive Java-based intrusion detection system that analyzes Apache web s
 - Technical Implementation
 - Security Recommendations
 - Learning Outcomes
-- Future Enhancements
-- Author
 
 # **Overview**
 This project implements a real-time log analysis tool that parses server logs to detect suspicious activities and potential cyber attacks. Built with Java, the system provides automated threat identification and alerting capabilities, making it suitable for security monitoring and forensic investigation.
