@@ -1,0 +1,24 @@
+Oct 24 16:03:22 server1 sshd[1358]: Accepted password for alice from 192.168.10.25 port 53412 ssh2
+Oct 24 16:04:18 server1 sshd[1361]: Accepted publickey for bob from 203.0.113.77 port 41283 ssh2: RSA SHA256:abcde12345
+Oct 24 16:06:35 server1 sshd[1362]: Failed password for invalid user admin from 212.47.232.105 port 37240 ssh2
+Oct 24 16:08:51 server1 sshd[1364]: Failed password for root from 101.45.77.21 port 49001 ssh2
+Oct 24 16:09:20 server1 sshd[1365]: Connection closed by authenticating user charlie 198.51.100.23 port 35891 [preauth]
+Oct 24 16:12:44 server1 sshd[1366]: Accepted password for david from 192.168.10.26 port 55312 ssh2
+Oct 24 16:13:10 server1 sshd[1367]: Disconnected from user alice 192.168.10.25 port 53412
+Oct 24 16:13:28 server1 sshd[1368]: Received disconnect from 203.0.113.77 port 41283:11: disconnected by user
+Oct 24 16:14:02 server1 sshd[1369]: Invalid user test from 212.47.232.105 port 37241
+Oct 24 16:15:15 server1 sshd[1370]: Failed password for guest from 203.0.113.88 port 55421 ssh2
+Oct 24 16:17:36 server1 sshd[1372]: session opened for user bob by (uid=0)
+Oct 24 16:19:53 server1 sshd[1372]: session closed for user bob
+Oct 29 10:15:22 server sshd[12345]: Failed password for invalid user admin from 192.168.1.50 port 22 ssh2
+Oct 29 10:20:30 server sshd[12347]: Accepted password for john from 192.168.1.100 port 22 ssh2
+Oct 29 10:15:22 server sshd[12345]: Failed password for invalid user admin from 192.168.1.50 port 22 ssh2
+Oct 29 10:20:30 server sshd[12347]: Accepted password for john from 192.168.1.100 port 22 ssh2
+Oct 29 10:25:17 server sshd[12348]: Failed password for root from 10.0.0.25 port 22 ssh2
+Oct 29 10:30:42 server sshd[12349]: Accepted password for alice from 203.0.113.60 port 22 ssh2
+Oct 29 10:33:55 server sshd[12350]: Failed password for user bob from 172.16.0.15 port 22 ssh2
+Oct 29 14:01:15 server sshd[12351]: Failed password for root from 192.168.1.60 port 22 ssh2
+Oct 29 14:01:16 server sshd[12352]: Failed password for root from 192.168.1.60 port 22 ssh2
+Oct 29 14:01:17 server sshd[12353]: Failed password for root from 192.168.1.60 port 22 ssh2
+Oct 29 14:01:18 server sshd[12354]: Failed password for root from 192.168.1.60 port 22 ssh2
+Oct 29 14:01:19 server sshd[12355]: Failed password for root from 192.168.1.60 port 22 ssh2
